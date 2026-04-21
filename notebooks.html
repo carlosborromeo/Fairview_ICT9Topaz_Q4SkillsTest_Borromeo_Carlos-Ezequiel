@@ -3,56 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jujutsu High Virtual Notebook</title>
+    <title>U.A. High Hero Analysis Notebook</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Google Sans', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: radial-gradient(circle at top, #FFE500 0%, #cc0003 25%, #002c8b 60%, #000000 100%);
             min-height: 100vh;
-            color: #e0e0e0;
+            color: #f5f5f5;
         }
-        
+
         .sidebar {
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             min-height: 100vh;
             padding: 20px;
-            border-right: 3px solid #e94560;
-            border-bottom: 3px solid #e94560;
-            box-shadow: 5px 0 20px rgba(233, 69, 96, 0.3);
+            border-right: 3px solid #FFE500;
+            border-bottom: 3px solid #FFE500;
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.6);
         }
-        
+
         .sidebar h3 {
-            color: #e94560;
+            color: #FFE500;
             margin-bottom: 20px;
             font-weight: bold;
-            text-shadow: 0 0 10px #e94560;
+            text-shadow: 0 0 10px #FFE500;
             font-size: 1.5rem;
         }
-        
+
         .search-box {
             margin-bottom: 20px;
         }
-        
+
         .search-box input {
             background: rgba(255, 255, 255, 0.1);
-            border: 2px solid #e94560;
+            border: 2px solid #FFE500;
             color: white;
             border-radius: 10px;
             padding: 10px 15px;
         }
-        
+
         .search-box input::placeholder {
-            color: #aaa;
+            color: #ccc;
         }
-        
+
         .search-box input:focus {
             outline: none;
-            box-shadow: 0 0 15px #e94560;
+            box-shadow: 0 0 15px #FFE500;
         }
-        
+
         .notebook-item {
             padding: 12px 15px;
             margin: 8px 0;
@@ -62,38 +62,38 @@
             color: #fff;
             font-weight: 500;
             border-left: 3px solid transparent;
-            background: rgba(233, 69, 96, 0.1);
+            background: rgba(0, 44, 139, 0.4);
         }
-        
+
         .notebook-item:hover {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #004b36 0%, #002c8b 50%, #cc0003 100%);
             color: white;
             transform: translateX(8px);
-            border-left: 3px solid #e94560;
-            box-shadow: 0 0 15px #e94560;
+            border-left: 3px solid #FFE500;
+            box-shadow: 0 0 15px #FFE500;
         }
-        
+
         .main-content {
             padding: 40px;
-            color: #e0e0e0;
+            color: #f5f5f5;
         }
-        
+
         .main-content h1 {
-            color: #e94560;
-            text-shadow: 0 0 20px #e94560;
+            color: #FFE500;
+            text-shadow: 0 0 20px #FFE500;
             font-weight: bold;
         }
-        
+
         .notebook-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
-        
+
         .notebook-card {
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #e94560;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #FFE500;
             border-radius: 15px;
             padding: 20px;
             text-align: center;
@@ -110,9 +110,9 @@
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 15px;
-            border: 1px solid rgba(233, 69, 96, 0.3);
+            border: 1px solid rgba(255, 229, 0, 0.5);
         }
-        
+
         .notebook-card::before {
             content: '';
             position: absolute;
@@ -120,110 +120,112 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(233, 69, 96, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 229, 0, 0.15) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.3s;
         }
-        
+
         .notebook-card:hover::before {
             opacity: 1;
         }
-        
+
         .notebook-card:hover {
             transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
         }
-        
+
         .notebook-card h5 {
             font-weight: bold;
-            color: #e0e0e0;
-            margin: 0;  
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            color: #f5f5f5;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
         }
-        
+
         .dashboard {
             display: none;
-            background: rgba(0, 0, 0, 0.9);
-            border: 3px solid #e94560;
+            background: rgba(0, 0, 0, 0.92);
+            border: 3px solid #FFE500;
             border-radius: 20px;
             padding: 40px;
-            color: #e0e0e0;
-            box-shadow: 0 0 50px rgba(233, 69, 96, 0.5);
+            color: #f5f5f5;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
             position: relative;
         }
-        
+
         .dashboard::before {
-            content: '𖣐';
+            content: 'U.A.';
             position: absolute;
             top: 10px;
             right: 15px;
             font-size: 2rem;
-            color: #e94560;
+            font-weight: bold;
+            color: #FFE500;
+            text-shadow: 0 0 10px #cc0003;
             animation: pulse 2s infinite;
         }
-        
+
         @keyframes pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            50% { opacity: 0.6; }
         }
-        
+
         .dashboard.active {
             display: block;
             animation: fadeIn 0.5s;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .btn-custom {
             margin: 5px;
             border-radius: 25px;
             padding: 10px 25px;
             font-weight: bold;
-            border: 2px solid #e94560;
-            background: rgba(233, 69, 96, 0.2);
-            color: #e0e0e0;
+            border: 2px solid #FFE500;
+            background: rgba(0, 44, 139, 0.7);
+            color: #f5f5f5;
             transition: all 0.3s;
         }
-        
+
         .btn-custom:hover {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #004b36 0%, #002c8b 50%, #cc0003 100%);
             color: white;
-            box-shadow: 0 0 20px #e94560;
+            box-shadow: 0 0 20px #FFE500;
             transform: scale(1.05);
         }
-        
+
         .alert {
-            background: rgba(233, 69, 96, 0.2);
-            border: 2px solid #e94560;
-            color: #0f3460;
+            background: rgba(0, 44, 139, 0.7);
+            border: 2px solid #FFE500;
+            color: #FFE500;
             border-radius: 15px;
         }
-        
+
         footer {
-            background: rgba(0, 0, 0, 0.9);
-            border-top: 3px solid #e94560;
-            color: #e0e0e0;
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 3px solid #FFE500;
+            color: #f5f5f5;
             padding: 20px 0;
             margin-top: 40px;
             text-align: center;
-            box-shadow: 0 -5px 20px rgba(233, 69, 96, 0.3);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.7);
         }
-        
+
         footer a {
-            color: rgb(255, 215, 120);
+            color: #FFE500;
             text-decoration: none;
             transition: all 0.3s;
         }
-        
+
         footer a:hover {
-            color: #e94560;
-            text-shadow: 0 0 10px #e94560;
+            color: #cc0003;
+            text-shadow: 0 0 10px #FFE500;
         }
-        
-        .cursed-energy {
+
+        .quirk-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -231,149 +233,148 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(233, 69, 96, 0.03) 10px,
-                rgba(233, 69, 96, 0.03) 20px
-            );
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(0, 255, 0, 0.05),
+                    rgba(0, 255, 0, 0.05) 2px,
+                    transparent 2px,
+                    transparent 4px
+                );
+            mix-blend-mode: screen;
         }
     </style>
 </head>
 <body>
-    <!-- hi sir -->
-    <div class="cursed-energy"></div>
+    <div class="quirk-overlay"></div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 col-lg-2 sidebar">
-                <h3><i class="bi bi-shield-shaded"></i> Jujutsu High Notebook</h3>
-                <p class="small text-light mb-3">Jujutsu High Training Portal</p>
-                
+                <h3>U.A. Hero Analysis Notebook</h3>
+                <p class="small text-light mb-3">U.A. High Student Training Hub</p>
+
                 <div class="search-box">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search classes...">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search hero courses...">
                 </div>
-                
+
                 <div id="notebookList">
-                    <div class="notebook-item" onclick="openDashboard('Cursed Energy Basics')">
-                        Cursed Energy Basics
+                    <div class="notebook-item" onclick="openDashboard('Heroics 101')">
+                        Heroics 101
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Barrier Geometry')">
-                        Barrier Geometry
+                    <div class="notebook-item" onclick="openDashboard('Quirk Fundamentals')">
+                        Quirk Fundamentals
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Binding Vows')">
-                        Binding Vows
+                    <div class="notebook-item" onclick="openDashboard('Rescue Training')">
+                        Rescue Training
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Cursed Tool Proficiency')">
-                        Cursed Tool Proficiency
+                    <div class="notebook-item" onclick="openDashboard('Battle Tactics')">
+                        Battle Tactics
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Veil Deployment')">
-                        Veil Deployment
+                    <div class="notebook-item" onclick="openDashboard('Internship Prep')">
+                        Internship Prep
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Black Flash Theory')">
-                        Black Flash Theory
+                    <div class="notebook-item" onclick="openDashboard('Support Item Design')">
+                        Support Item Design
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Shikigami Manifestation')">
-                        Shikigami Manifestation
+                    <div class="notebook-item" onclick="openDashboard('Stealth & Infiltration')">
+                        Stealth & Infiltration
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Curse Classifications')">
-                        Curse Classifications
+                    <div class="notebook-item" onclick="openDashboard('Team Combat Drills')">
+                        Team Combat Drills
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Curse Identification')">
-                        Curse Identification
+                    <div class="notebook-item" onclick="openDashboard('Hero Law & Ethics')">
+                        Hero Law & Ethics
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Anti-Domain Techniques')">
-                        Anti-Domain Techniques
+                    <div class="notebook-item" onclick="openDashboard('Pro Hero Case Studies')">
+                        Pro Hero Case Studies
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Cursed Energy Reinforcement')">
-                        Cursed Energy Reinforcement
+                    <div class="notebook-item" onclick="openDashboard('Quirk Control & Safety')">
+                        Quirk Control & Safety
                     </div>
-                    <div class="notebook-item" onclick="openDashboard('Reverse Cursed Technique')">
-                        Reverse Cursed Technique
+                    <div class="notebook-item" onclick="openDashboard('Hero Analysis for the Future')">
+                        Hero Analysis for the Future
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-9 col-lg-10 main-content">
-                <h1 class="text-center mb-2">Jujutsu High Training Portal</h1>
-                <p class="text-center lead">Access your classes' domains by clicking on the notebooks</p>
-                
+                <h1 class="text-center mb-2">U.A. High Training Portal</h1>
+                <p class="text-center lead">Access your hero course notebooks by clicking on the entries below</p>
+
                 <div id="welcomeSection">
                     <div class="notebook-grid">
-                        <div class="notebook-card" onclick="openDashboard('Cursed Energy Basics')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Cursed Energy Basics">
-                            <h5>Cursed Energy Basics</h5>
+                        <div class="notebook-card" onclick="openDashboard('Heroics 101')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Heroics 101">
+                            <h5>Heroics 101</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Barrier Geometry')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Barrier Geometry">
-                            <h5>Barrier Geometry</h5>
+                        <div class="notebook-card" onclick="openDashboard('Quirk Fundamentals')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Quirk Fundamentals">
+                            <h5>Quirk Fundamentals</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Binding Vows')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Binding Vows">
-                            <h5>Binding Vows</h5>
+                        <div class="notebook-card" onclick="openDashboard('Rescue Training')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Rescue Training">
+                            <h5>Rescue Training</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Cursed Tool Proficiency')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Cursed Tool Proficiency">
-                            <h5>Cursed Tool Proficiency</h5>
+                        <div class="notebook-card" onclick="openDashboard('Battle Tactics')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Battle Tactics">
+                            <h5>Battle Tactics</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Veil Deployment')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Veil Deployment">
-                            <h5>Veil Deployment</h5>
+                        <div class="notebook-card" onclick="openDashboard('Internship Prep')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Internship Prep">
+                            <h5>Internship Prep</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Black Flash Theory')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Black Flash Theory">
-                            <h5>Black Flash Theory</h5>
+                        <div class="notebook-card" onclick="openDashboard('Support Item Design')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Support Item Design">
+                            <h5>Support Item Design</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Shikigami Manifestation')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Shikigami Manifestation">
-                            <h5>Shikigami Manifestation</h5>
+                        <div class="notebook-card" onclick="openDashboard('Stealth & Infiltration')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Stealth & Infiltration">
+                            <h5>Stealth & Infiltration</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Curse Classifications')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Curse Classifications">
-                            <h5>Curse Classifications</h5>
+                        <div class="notebook-card" onclick="openDashboard('Team Combat Drills')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Team Combat Drills">
+                            <h5>Team Combat Drills</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Curse Identification')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Curse Identification">
-                            <h5>Curse Identification</h5>
+                        <div class="notebook-card" onclick="openDashboard('Hero Law & Ethics')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Hero Law & Ethics">
+                            <h5>Hero Law & Ethics</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Anti-Domain Techniques')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Anti-Domain Techniques">
-                            <h5>Anti-Domain Techniques</h5>
+                        <div class="notebook-card" onclick="openDashboard('Pro Hero Case Studies')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Pro Hero Case Studies">
+                            <h5>Pro Hero Case Studies</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Cursed Energy Reinforcement')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Cursed Energy Reinforcement">
-                            <h5>Cursed Energy Reinforcement</h5>
+                        <div class="notebook-card" onclick="openDashboard('Quirk Control & Safety')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Quirk Control & Safety">
+                            <h5>Quirk Control & Safety</h5>
                         </div>
-                        <div class="notebook-card" onclick="openDashboard('Reverse Cursed Technique')">
-                            <img src="https://i.pinimg.com/736x/62/fb/19/62fb1939b1f00d25be8657c29983b893.jpg" alt="Reverse Cursed Technique">
-                            <h5>Reverse Cursed Technique</h5>
+                        <div class="notebook-card" onclick="openDashboard('Hero Analysis for the Future')">
+                            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="Hero Analysis for the Future">
+                            <h5>Hero Analysis for the Future</h5>
                         </div>
                     </div>
                 </div>
 
                 <div id="dashboardSection" class="dashboard">
-                    <h2 id="dashboardTitle" class="mb-3">Subject Domain</h2>
-                    <p id="dashboardInfo">Subject information will appear here.</p>
-                    
+                    <h2 id="dashboardTitle" class="mb-3">Course Notebook</h2>
+                    <p id="dashboardInfo">Course information will appear here.</p>
+
                     <div class="mt-4">
                         <button class="btn btn-custom" onclick="showNotes()">View Notes</button>
                         <button class="btn btn-custom" onclick="showTasks()">View Tasks</button>
-                        <button class="btn btn-custom" onclick="closeDashboard()">Exit Domain</button>
+                        <button class="btn btn-custom" onclick="closeDashboard()">Return to U.A. Campus</button>
                     </div>
-                    
+
                     <div id="dashboardContent" class="mt-4"></div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <footer>
         <div class="container">
-            <p>© 2026 Jujutsu High - Tokyo Branch. All cursed energy reserved.</p>
+            <p>© 2026 U.A. High School - Hero Course. Go beyond, Plus Ultra.</p>
             <p>
-                <a href="https://www.depEd.gov.ph" target="_blank">DepEd</a> | 
-                <a href="https://www.ched.gov.ph" target="_blank">CHED</a> | 
-                <a href="https://jujutsu-kaisen.fandom.com/wiki/Jujutsu_Kaisen_Wiki" target="_blank">Jujutsu Kaisen Wiki</a>
+                <a href="https://myheroacademia.fandom.com/wiki/U.A._High_School" target="_blank">My Hero Academia Wiki: U.A. High</a>
             </p>
         </div>
     </footer>
@@ -382,34 +383,90 @@
     let totalNotebooks = 12;
     let currentSubject = "";
 
-    // opens the specific subject domain and hides the main screen with all the notebooks
+    // different colors cause super fun!
+    const dashboards = {
+        "Heroics 101": {
+            color: "#FF0000", // red
+            intro: "Foundational combat and movement.",
+        },
+        "Quirk Fundamentals": {
+            color: "#00FF9A", // greenish accent
+            intro: "Understanding all aspects of your quirk.",
+        },
+        "Rescue Training": {
+            color: "#00C4FF", // cyan
+            intro: "Disaster response, first aid, and civilian evacuation drills.",
+        },
+        "Battle Tactics": {
+            color: "#FFE500", // yellow
+            intro: "Strategy before, during, and after battle.",
+        },
+        "Internship Prep": {
+            color: "#FFFFFF", // white
+            intro: "Preparing for hero internships and agency expectations.",
+        },
+        "Support Item Design": {
+            color: "#1CFF72", // bright green
+            intro: "Designing and testing support gear.",
+        },
+        "Stealth & Infiltration": {
+            color: "#9B59B6", // purple
+            intro: "Covert ops and general stealth.",
+        },
+        "Team Combat Drills": {
+            color: "#1ABC9C", // teal
+            intro: "Multi-hero coordination and teamwork.",
+        },
+        "Hero Law & Ethics": {
+            color: "#F39C12", // orange
+            intro: "Legal frameworks, hero licensing, and ethical dilemmas.",
+        },
+        "Pro Hero Case Studies": {
+            color: "#E74C3C", // deep red
+            intro: "Analysis of real incidents involving top pro heroes.",
+        },
+        "Quirk Control & Safety": {
+            color: "#2ECC71", // green
+            intro: "Fine-tuning quirk output to maximize efficiency.",
+        },
+        "Hero Analysis for the Future": {
+            color: "#3498DB", // blue
+            intro: "Detailed observation of your portfolio to prepare for the future.",
+        }
+    };
+
     function openDashboard(subject) {
         currentSubject = subject;
 
         document.getElementById("welcomeSection").style.display = "none";
         document.getElementById("dashboardSection").classList.add("active");
 
-        document.getElementById("dashboardTitle").innerHTML = subject + " Domain";
+        const config = dashboards[subject] || { color: "#FFE500", intro: "" };
+
+        const titleEl = document.getElementById("dashboardTitle");
+        titleEl.innerHTML = subject + " Notebook";
+        titleEl.style.color = config.color;
+        titleEl.style.textShadow = "0 0 15px " + config.color;
+
         document.getElementById("dashboardInfo").innerHTML =
-            "Welcome to the " + subject + " training domain. Here you can see your notes, remaining tasks, and monitor your progress.";
+            config.intro +
+            " Here you can review your hero notes, remaining training tasks, and monitor your growth.";
 
         document.getElementById("dashboardContent").innerHTML =
             "<div class='alert alert-dark text-light mb-0'>" +
-            "<strong>Subject:</strong> " + subject + "<br>" +
+            "<strong>Course:</strong> " + subject + "<br>" +
             "</div>";
     }
 
-    // displays dummy notes for the selected subject
     function showNotes() {
         let notesHTML = "<h4>Notes for " + currentSubject + "</h4><ul>";
         for (let i = 1; i <= 5; i++) {
-            notesHTML += "<li>Note " + i + " - Important note for " + currentSubject + "</li>";
+            notesHTML += "<li>Note " + i + " - Important hero analysis for " + currentSubject + "</li>";
         }
         notesHTML += "</ul>";
         document.getElementById("dashboardContent").innerHTML = notesHTML;
     }
 
-    // displays mission/task progress for the selected subject (including percentage!)
     function showTasks() {
         let taskCount = 4;
         let completed = 1;
@@ -417,34 +474,30 @@
 
         document.getElementById("dashboardContent").innerHTML =
             "<h4>Tasks for " + currentSubject + "</h4>" +
-            "<p>Total missions: " + taskCount + "</p>" +
+            "<p>Total training missions: " + taskCount + "</p>" +
             "<p>Completed: " + completed + "</p>" +
             "<p>Remaining: " + remaining + "</p>" +
             "<div class='progress mt-3'>" +
-            "<div class='progress-bar bg-danger' style='width: " + (completed / taskCount * 100) + "%'>" +
+            "<div class='progress-bar bg-warning' style='width: " + (completed / taskCount * 100) + "%'>" +
             Math.round(completed / taskCount * 100) + "%</div>" +
             "</div>";
     }
 
-    // goes back to the main screen with the notebook grid
     function closeDashboard() {
         document.getElementById("dashboardSection").classList.remove("active");
         document.getElementById("welcomeSection").style.display = "block";
         currentSubject = "";
     }
 
-    // search bar to search through sidebar and main grids (this section alone took an hour to make but its so cool)
     document.getElementById("searchInput").addEventListener("keyup", function () {
         let searchValue = this.value.toLowerCase();
 
-        // filters the sidebar items
         let notebookItems = document.querySelectorAll(".notebook-item");
         notebookItems.forEach(item => {
             let text = item.textContent.toLowerCase();
             item.style.display = text.includes(searchValue) ? "block" : "none";
         });
 
-        // filters the main grid items
         let notebookCards = document.querySelectorAll(".notebook-card");
         notebookCards.forEach(card => {
             let title = card.querySelector("h5").textContent.toLowerCase();
