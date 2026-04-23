@@ -372,7 +372,7 @@
 
     <footer>
         <div class="container">
-            <p>© 2026 U.A. High School - Hero Course. Go beyond, Plus Ultra.</p>
+            <p>© 2026 U.A. High School - Hero Course. Go beyond, PLUS ULTRA!</p>
             <p>
                 <a href="https://myheroacademia.fandom.com/wiki/U.A._High_School" target="_blank">My Hero Academia Wiki: U.A. High</a>
             </p>
@@ -386,64 +386,64 @@
     // different colors cause super fun!
     const dashboards = {
         "Heroics 101": {
-            color: "#FF0000", // red
+            color: "#FF0000", // red cause fighting
             intro: "Foundational combat and movement.",
         },
         "Quirk Fundamentals": {
-            color: "#00FF9A", // greenish accent
+            color: "#00FF9A", // greenish color because of deku his hair is green and he has one of the most iconic quirks ever
             intro: "Understanding all aspects of your quirk.",
         },
         "Rescue Training": {
-            color: "#00C4FF", // cyan
+            color: "#00C4FF", // cyan just feels right
             intro: "Disaster response, first aid, and civilian evacuation drills.",
         },
         "Battle Tactics": {
-            color: "#FFE500", // yellow
+            color: "#FFE500", // yellow seems very strategic
             intro: "Strategy before, during, and after battle.",
         },
         "Internship Prep": {
-            color: "#FFFFFF", // white
+            color: "#F0F0F0", // a bit of a dirty white
             intro: "Preparing for hero internships and agency expectations.",
         },
         "Support Item Design": {
-            color: "#1CFF72", // bright green
+            color: "#1CFF72", // bright green for support
             intro: "Designing and testing support gear.",
         },
         "Stealth & Infiltration": {
-            color: "#9B59B6", // purple
+            color: "#9B59B6", // stealth is always purple and gray
             intro: "Covert ops and general stealth.",
         },
         "Team Combat Drills": {
-            color: "#1ABC9C", // teal
+            color: "#1ABC9C", // tealwork!! (teamwork + teal)
             intro: "Multi-hero coordination and teamwork.",
         },
         "Hero Law & Ethics": {
-            color: "#F39C12", // orange
+            color: "#F39C12", // orange seems like a very legal color
             intro: "Legal frameworks, hero licensing, and ethical dilemmas.",
         },
         "Pro Hero Case Studies": {
-            color: "#E74C3C", // deep red
+            color: "#E74C3C", // deep red because it seems mature and real-worldy, also reminds me of blood which is very present in the hero world
             intro: "Analysis of real incidents involving top pro heroes.",
         },
         "Quirk Control & Safety": {
-            color: "#2ECC71", // green
+            color: "#2ECC71", // green as always, quirks are green because of deku
             intro: "Fine-tuning quirk output to maximize efficiency.",
         },
         "Hero Analysis for the Future": {
-            color: "#3498DB", // blue
+            color: "#3498DB", // blue = future
             intro: "Detailed observation of your portfolio to prepare for the future.",
         }
     };
 
-    function openDashboard(subject) {
+    function openDashboard(subject) { // opens dashboard
         currentSubject = subject;
 
-        document.getElementById("welcomeSection").style.display = "none";
-        document.getElementById("dashboardSection").classList.add("active");
+        document.getElementById("welcomeSection").style.display = "none"; // hide main page
+        document.getElementById("dashboardSection").classList.add("active"); // show dashboard
 
-        const config = dashboards[subject] || { color: "#FFE500", intro: "" };
+        const config = dashboards[subject] || { color: "#FFE500", intro: "" }; // checks the part above this for the settings for the subject
 
-        const titleEl = document.getElementById("dashboardTitle");
+        const titleEl = document.getElementById("dashboardTitle"); // some visual stuff
         titleEl.innerHTML = subject + " Notebook";
         titleEl.style.color = config.color;
         titleEl.style.textShadow = "0 0 15px " + config.color;
@@ -458,50 +458,55 @@
             "</div>";
     }
 
-    function showNotes() {
+    function showNotes() { // to save time and meet the requirements i added a for loop
         let notesHTML = "<h4>Notes for " + currentSubject + "</h4><ul>";
-        for (let i = 1; i <= 5; i++) {
-            notesHTML += "<li>Note " + i + " - Important hero analysis for " + currentSubject + "</li>";
+        for (let i = 1; i <= 5; i++) { // set i to 1, check if i is less than or equal to 5, then add i using an increment every time the code block under this is executed (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Increment)
+            notesHTML += "<li>Note " + i + " - Important hero analysis for " + currentSubject + "</li>"; // basic concatenation of text and variable
         }
-        notesHTML += "</ul>";
-        document.getElementById("dashboardContent").innerHTML = notesHTML;
+        notesHTML += "</ul>";  // close the ul
+        document.getElementById("dashboardContent").innerHTML = notesHTML; // basically just prints everything
     }
 
-    function showTasks() {
-        let taskCount = 4;
-        let completed = 1;
-        let remaining = taskCount - completed;
+    function showTasks() { // just for fun i made it generate a random number of tasks
+        let taskCount = Math.floor(Math.random() * (7 - 4 + 1)) + 4; // task amount is between 4 and 7
+        let completed = Math.floor(Math.random() * 4) + 1; // just a random number between 1 and 3
+        let remaining = taskCount - completed; // number of "tasks left to do" even if you can't really do anything
 
-        document.getElementById("dashboardContent").innerHTML =
+        // the side effect of this ^ is that it randomly generates a number every time you click the button
+
+        document.getElementById("dashboardContent").innerHTML = // just writing a bunch of text to label the values
             "<h4>Tasks for " + currentSubject + "</h4>" +
             "<p>Total training missions: " + taskCount + "</p>" +
             "<p>Completed: " + completed + "</p>" +
             "<p>Remaining: " + remaining + "</p>" +
             "<div class='progress mt-3'>" +
             "<div class='progress-bar bg-warning' style='width: " + (completed / taskCount * 100) + "%'>" +
-            Math.round(completed / taskCount * 100) + "%</div>" +
+            Math.round(completed / taskCount * 100) + "%</div>" + // percentage maker
+
+            // also i learned that doing + "%</div>" is so much easier than + "%" + "<div>"
+
             "</div>";
     }
 
-    function closeDashboard() {
+    function closeDashboard() { // go back to the main card page thing
         document.getElementById("dashboardSection").classList.remove("active");
         document.getElementById("welcomeSection").style.display = "block";
         currentSubject = "";
     }
 
     document.getElementById("searchInput").addEventListener("keyup", function () {
-        let searchValue = this.value.toLowerCase();
+        let searchValue = this.value.toLowerCase(); // keyup checks every time you release a key on the keyboard so its SUPER smooth
 
-        let notebookItems = document.querySelectorAll(".notebook-item");
+        let notebookItems = document.querySelectorAll(".notebook-item"); // this is for the sidebar
         notebookItems.forEach(item => {
-            let text = item.textContent.toLowerCase();
-            item.style.display = text.includes(searchValue) ? "block" : "none";
+            let text = item.textContent.toLowerCase(); // makes it not case sensitive by reading the input as lowercase
+            item.style.display = text.includes(searchValue) ? "block" : "none"; // checks if title has the thing you inputted
         });
 
-        let notebookCards = document.querySelectorAll(".notebook-card");
+        let notebookCards = document.querySelectorAll(".notebook-card"); // this is for the actual cards
         notebookCards.forEach(card => {
-            let title = card.querySelector("h5").textContent.toLowerCase();
-            card.style.display = title.includes(searchValue) ? "block" : "none";
+            let title = card.querySelector("h5").textContent.toLowerCase(); // again it makes it case insensitive
+            card.style.display = title.includes(searchValue) ? "block" : "none"; // checks if the title includes what you inputted
         });
     });
     </script>
